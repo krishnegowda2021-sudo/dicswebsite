@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/site/Blocks";
 import { brands } from "@/lib/site";
 import { products } from "@/lib/catalog";
 import { seo } from "@/lib/seo";
+import { BrandLogo } from "@/components/site/BrandLogo";
 
 export const Route = createFileRoute("/our-brands/")({
   head: () => ({ meta: seo("Our Brands", "Automation manufacturers DICS is associated with: OMRON, Fuji Electric, Pro-face, Autonics, CKD, IDEC, Wöhner and PATLITE.") }),
@@ -18,7 +19,7 @@ function BrandsPage() {
           const count = products.filter((p) => p.brand === b.catalogName).length;
           return (
             <Link key={b.slug} to="/our-brands/$slug" params={{ slug: b.slug }} className="group flex flex-col rounded-lg border border-border bg-card p-7 transition-shadow hover:shadow-lift">
-              <span className="font-display text-3xl font-extrabold tracking-tight text-navy group-hover:text-primary">{b.name}</span>
+              <BrandLogo brand={b} />
               <span className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{b.origin}</span>
               <p className="mt-4 line-clamp-3 text-sm text-muted-foreground">{b.intro}</p>
               <span className="mt-auto pt-5 text-sm font-semibold text-primary">{count} products →</span>

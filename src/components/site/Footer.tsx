@@ -12,9 +12,7 @@ export function Footer() {
           <div className="inline-block rounded-md bg-card p-3">
             <img src={logo} alt="DICS — Digital Instruments & Control Systems" width={488} height={248} loading="lazy" className="h-12 w-auto" />
           </div>
-          <p className="mt-5 max-w-sm text-sm leading-relaxed">
-            Digital Instruments & Control Systems has supplied industrial automation products and engineering services from Bangalore since {company.founded}, with offices across India.
-          </p>
+          <h2 className="mt-5 max-w-sm text-base font-semibold text-navy-foreground">Digital Instruments &amp; Control Systems</h2>
           <ul className="mt-6 grid gap-3 text-sm">
             <li className="flex gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden /><a href={company.mapUrl} target="_blank" rel="noopener noreferrer" className="hover:text-navy-foreground">{company.address}</a></li>
             <li className="flex gap-3"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden /><span>{company.phones.map((p, i) => <a key={p.href} href={p.href} className="hover:text-navy-foreground">{i > 0 && ", "}{p.label}</a>)}</span></li>

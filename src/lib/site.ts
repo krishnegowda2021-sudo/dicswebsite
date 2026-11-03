@@ -46,7 +46,7 @@ export type Brand = {
   slug: string;
   name: string;
   catalogName: string; // matches product.brand
-  logo: string;
+  logo?: string;
   origin: string;
   website: string;
   intro: string;

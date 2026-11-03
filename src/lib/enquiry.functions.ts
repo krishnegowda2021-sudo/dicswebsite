@@ -84,7 +84,8 @@ export const submitEnquiry = createServerFn({ method: "POST" })
       });
       const result: unknown = await response.json();
       if (!response.ok || !enquiryEmailAccepted(result)) {
-        console.error("FormSubmit notification rejected", response.status);
+        const reason = result && typeof result === "object" && "message" in result && typeof result.message === "string" ? result.message : "Unknown rejection";
+        console.error("FormSubmit notification rejected", response.status, reason);
         return { ok: false as const, error: "Your enquiry is saved, but the email notification could not be sent. Please contact us by phone or email." };
       }
     } catch {

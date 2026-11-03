@@ -33,8 +33,8 @@ export const submitEnquiry = createServerFn({ method: "POST" })
       return { ok: false as const, error: "Your submission could not be verified. Please try again." };
     }
     const { createClient } = await import("@supabase/supabase-js");
-    const url = process.env["SUPABASE_URL"];
-    const key = process.env["SUPABASE_PUBLISHABLE_KEY"];
+    const url = process.env["SUPABASE_URL"] || import.meta.env.VITE_SUPABASE_URL;
+    const key = process.env["SUPABASE_PUBLISHABLE_KEY"] || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
     if (!url || !key) return { ok: false as const, error: "Enquiries are temporarily unavailable. Please call or email us instead." };
     const supabase = createClient(url, key, {
       auth: { persistSession: false, autoRefreshToken: false },
@@ -64,7 +64,7 @@ export const submitEnquiry = createServerFn({ method: "POST" })
     try {
       const { getRequest } = await import("@tanstack/react-start/server");
       const request = getRequest();
-      const sourceOrigin = new URL(request.url).origin;
+      const sourceOrigin = new URL(request.headers.get("origin") || request.url).origin;
       const response = await fetch(enquiryEmailEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json", Referer: `${sourceOrigin}${data.pageUrl.startsWith("/") ? data.pageUrl : "/"}`, Origin: sourceOrigin },

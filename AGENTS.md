@@ -20,3 +20,4 @@
 - Careers listings and validation live in a browser-safe module; applications are stored through a validated server function with insert-only visitor access, while résumés use private email rather than public uploads.
 
 - Keep this project’s generated Cloud clients and migration history separate from imported source configuration to avoid connecting to the original app’s private data.
+- Public insert-only submission clients fall back to the project's compiled VITE public configuration when server bindings are absent, so external deployments retain submission access without embedding private credentials.

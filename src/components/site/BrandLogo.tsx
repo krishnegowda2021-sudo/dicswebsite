@@ -9,10 +9,10 @@ export function BrandLogo({ brand, loading = "lazy" }: BrandLogoProps) {
     <img
       src={brand.logo}
       alt={`${brand.name} logo`}
-      width={224}
-      height={80}
+      width={160}
+      height={56}
       loading={loading}
-      className="h-20 w-56 max-w-full object-contain"
+      className="h-14 w-40 max-w-full object-contain"
     />
   );
 }

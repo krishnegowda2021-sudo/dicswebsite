@@ -196,7 +196,7 @@ export function Header() {
                   <ul className="grid grid-cols-4 gap-3">
                     {brands.map((b) => (
                       <li key={b.slug}>
-                        <Link to="/our-brands/$slug" params={{ slug: b.slug }} onClick={close} className="group flex h-28 items-center justify-center rounded-md border border-border p-4 hover:border-primary hover:shadow-card">
+                        <Link to="/our-brands/$slug" params={{ slug: b.slug }} onClick={close} className="group flex h-20 items-center justify-center rounded-md border border-border p-3 hover:border-primary hover:shadow-card">
                           <BrandLogo brand={b} loading="eager" />
                         </Link>
                       </li>

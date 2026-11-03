@@ -15,7 +15,7 @@ function BrandsPage() {
       <PageHeader title="Our brands" eyebrow="Technology brands" crumbs={[{ label: "Our Brands" }]} intro="Over the years DICS has associated with leading names in automation. Explore each manufacturer's products in our catalogue." />
       <section className="container-site grid gap-5 py-16 sm:grid-cols-2 lg:grid-cols-4">
         {brands.map((b) => (
-            <Link key={b.slug} to="/our-brands/$slug" params={{ slug: b.slug }} className="group flex h-36 items-center justify-center rounded-lg border border-border bg-card p-7 transition-shadow hover:border-primary hover:shadow-lift">
+            <Link key={b.slug} to="/our-brands/$slug" params={{ slug: b.slug }} className="group flex h-24 items-center justify-center rounded-lg border border-border bg-card p-4 transition-shadow hover:border-primary hover:shadow-lift">
               <BrandLogo brand={b} />
             </Link>
         ))}

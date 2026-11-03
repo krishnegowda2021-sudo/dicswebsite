@@ -6,6 +6,7 @@ import { CountUp, Reveal } from "@/components/site/Reveal";
 import { brands, featuredCategorySlugs, images, industries, services, company } from "@/lib/site";
 import { getCategory, getProduct, productsIn, type Product } from "@/lib/catalog";
 import { seo } from "@/lib/seo";
+import { BrandLogo } from "@/components/site/BrandLogo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -164,7 +165,7 @@ function Home() {
                 aria-hidden={i >= brands.length}
                 tabIndex={i >= brands.length ? -1 : undefined}
               >
-                <span className="font-display text-2xl font-extrabold tracking-tight text-navy/80 transition-colors group-hover:text-primary">{b.name}</span>
+                <BrandLogo brand={b} loading="eager" />
                 <span className="mt-1 text-[0.7rem] uppercase tracking-wider text-muted-foreground">{b.origin}</span>
               </Link>
             ))}

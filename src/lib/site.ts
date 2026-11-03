@@ -4,6 +4,18 @@ import indAuto from "@/assets/ind-auto.jpg";
 import indPharma from "@/assets/ind-pharma.jpg";
 import indWater from "@/assets/ind-water.jpg";
 import indFood from "@/assets/ind-food.jpg";
+import fujiLogo from "@/assets/brands/fuji-electric.png.asset.json";
+import omronLogo from "@/assets/brands/omron.svg.asset.json";
+import proFaceLogo from "@/assets/brands/pro-face.png.asset.json";
+import autonicsLogo from "@/assets/brands/autonics.svg.asset.json";
+import ckdLogo from "@/assets/brands/ckd.svg.asset.json";
+import wohnerLogo from "@/assets/brands/wohner.svg.asset.json";
+import idecLogo from "@/assets/brands/idec.png.asset.json";
+import patliteLogo from "@/assets/brands/patlite.svg.asset.json";
+import { catalogAssetUrl } from "./catalog-asset-url";
+
+const brandArtwork = [fujiLogo, omronLogo, proFaceLogo, autonicsLogo, ckdLogo, wohnerLogo, idecLogo, patliteLogo];
+export const brandOrder = ["fuji-electric", "omron", "pro-face", "autonics", "ckd", "wohner", "idec", "patlite"];
 
 /** Verified from dicsglobal.com (contact-us and about-us pages). */
 export const company = {
@@ -46,13 +58,13 @@ export type Brand = {
   slug: string;
   name: string;
   catalogName: string; // matches product.brand
-  logo?: string;
+  logo: string;
   origin: string;
   website: string;
   intro: string;
 };
 /** Brands named on dicsglobal.com/about-us as associations. No distributorship is claimed. */
-export const brands: Brand[] = [
+const brandDetails = [
   { slug: "omron", name: "OMRON", catalogName: "OMRON", origin: "Japan", website: "https://industrial.omron.in/", intro: "OMRON Industrial Automation develops controllers, sensors, safety devices, motion and robotics products used across discrete and process manufacturing. The DICS catalogue includes OMRON PLCs, safety PLCs, temperature controllers, timers, sensors, vision systems, servo systems and robots." },
   { slug: "fuji-electric", name: "Fuji Electric", catalogName: "Fuji Electric", origin: "Japan", website: "https://www.fujielectric.com/", intro: "Fuji Electric manufactures power electronics and automation equipment including inverters, servo systems, PLCs, HMIs, temperature controllers and UPS systems. DICS lists Fuji Electric drives, controllers, HMIs and power products in its catalogue." },
   { slug: "pro-face", name: "Pro-face", catalogName: "Pro-face", origin: "Japan", website: "https://www.proface.com/", intro: "Pro-face, a Schneider Electric brand, specialises in HMI operator interfaces and industrial PCs that give operators clear visibility and control of machines and processes." },
@@ -62,6 +74,12 @@ export const brands: Brand[] = [
   { slug: "wohner", name: "Wöhner", catalogName: "Wöhner", origin: "Germany", website: "https://www.woehner.com/", intro: "Wöhner develops busbar systems and power distribution components for control panels, helping panel builders create compact and safe energy distribution." },
   { slug: "patlite", name: "PATLITE", catalogName: "PATLITE", origin: "Japan", website: "https://www.patlite.com/", intro: "PATLITE manufactures visual and audible signalling devices — signal towers, beacons, LED lighting, audible alarms and networked signalling products for factory status indication." },
 ];
+
+export const brands: Brand[] = brandOrder.flatMap((slug, index) => {
+  const brand = brandDetails.find((item) => item.slug === slug);
+  const artwork = brandArtwork[index];
+  return brand && artwork ? [{ ...brand, logo: catalogAssetUrl(artwork) }] : [];
+});
 
 export type Service = {
   slug: string;

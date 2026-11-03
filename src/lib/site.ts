@@ -8,7 +8,7 @@ import fujiLogo from "@/assets/brands/fuji-electric.png.asset.json";
 import omronLogo from "@/assets/brands/omron.svg.asset.json";
 import proFaceLogo from "@/assets/brands/pro-face.png.asset.json";
 import autonicsLogo from "@/assets/brands/autonics.svg.asset.json";
-import ckdLogo from "@/assets/brands/ckd.svg.asset.json";
+import ckdLogo from "@/assets/brands/ckd-crisp.svg.asset.json";
 import wohnerLogo from "@/assets/brands/wohner.svg.asset.json";
 import idecLogo from "@/assets/brands/idec.png.asset.json";
 import patliteLogo from "@/assets/brands/patlite.svg.asset.json";

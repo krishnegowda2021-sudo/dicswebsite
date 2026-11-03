@@ -1,6 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { enquiryEmailEndpoint, enquiryEmailAccepted } from "./enquiry-email";
+import { enquiryEmailEndpoint, enquiryEmailAccepted, enquiryActivatedOrigin } from "./enquiry-email";
 
 export const enquirySchema = z.object({
   kind: z.enum(["general", "quote", "product"]),
@@ -67,7 +67,7 @@ export const submitEnquiry = createServerFn({ method: "POST" })
       const sourceOrigin = new URL(request.headers.get("origin") || request.url).origin;
       const response = await fetch(enquiryEmailEndpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json", Referer: `${sourceOrigin}${data.pageUrl.startsWith("/") ? data.pageUrl : "/"}`, Origin: sourceOrigin },
+        headers: { "Content-Type": "application/json", Accept: "application/json", Referer: `${enquiryActivatedOrigin}${data.pageUrl.startsWith("/") ? data.pageUrl : "/"}`, Origin: enquiryActivatedOrigin },
         body: JSON.stringify({
           _subject: `New Website Enquiry - ${data.fullName}`,
           _template: "table",
@@ -82,6 +82,7 @@ export const submitEnquiry = createServerFn({ method: "POST" })
           "Enquiry type": data.kind,
           Message: data.message,
           Page: data.pageUrl || "/",
+          Website: sourceOrigin,
         }),
         signal: AbortSignal.timeout(15000),
       });

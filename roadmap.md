@@ -1,4 +1,5 @@
 # Repository import
+- [x] Show logo-only brand navigation and listing, without countries, in the requested order.
 - [x] Show authentic logos in the requested order on Brands and Home.
 - [x] Replace footer description with the simple company heading.
 - [ ] Confirm FormSubmit delivery to dicsblr@gmail.com (restored; test stored successfully; blocked: recipient must click FormSubmit's Activate Form email).

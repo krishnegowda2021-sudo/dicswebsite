@@ -33,8 +33,8 @@ export const submitEnquiry = createServerFn({ method: "POST" })
       return { ok: false as const, error: "Your submission could not be verified. Please try again." };
     }
     const { createClient } = await import("@supabase/supabase-js");
-    const url = process.env["SUPABASE_URL"] || import.meta.env.VITE_SUPABASE_URL;
-    const key = process.env["SUPABASE_PUBLISHABLE_KEY"] || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+    const url = process.env["SUPABASE_URL"] || import.meta.env["VITE_SUPABASE_URL"];
+    const key = process.env["SUPABASE_PUBLISHABLE_KEY"] || import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"];
     if (!url || !key) return { ok: false as const, error: "Enquiries are temporarily unavailable. Please call or email us instead." };
     const supabase = createClient(url, key, {
       auth: { persistSession: false, autoRefreshToken: false },

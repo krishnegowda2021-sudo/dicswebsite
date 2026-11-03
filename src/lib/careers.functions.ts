@@ -14,8 +14,8 @@ export const submitCareerApplication = createServerFn({ method: "POST" })
       return { ok: false as const, error: "Please take a moment to review your details and try again." };
     }
     const { createClient } = await import("@supabase/supabase-js");
-    const url = process.env["SUPABASE_URL"] || import.meta.env.VITE_SUPABASE_URL;
-    const key = process.env["SUPABASE_PUBLISHABLE_KEY"] || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+    const url = process.env["SUPABASE_URL"] || import.meta.env["VITE_SUPABASE_URL"];
+    const key = process.env["SUPABASE_PUBLISHABLE_KEY"] || import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"];
     if (!url || !key) return { ok: false as const, error: "Applications are temporarily unavailable. Please email your application instead." };
     // Insert-only public client: visitors cannot read candidate details.
     const client = createClient(url, key, {

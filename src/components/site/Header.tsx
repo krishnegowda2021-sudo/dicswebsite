@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { brands, company, services } from "@/lib/site";
 import { categoryPath, childrenOf, getCategory } from "@/lib/catalog";
+import { BrandLogo } from "@/components/site/BrandLogo";
 
 const productGroups = [
   { title: "Control & Automation", slugs: ["automation-systems", "control-components", "motion-controller", "robotics"] },
@@ -195,9 +196,8 @@ export function Header() {
                   <ul className="grid grid-cols-4 gap-3">
                     {brands.map((b) => (
                       <li key={b.slug}>
-                        <Link to="/our-brands/$slug" params={{ slug: b.slug }} onClick={close} className="group flex h-full flex-col rounded-md border border-border p-4 hover:border-primary hover:shadow-card">
-                          <span className="font-display text-lg font-bold tracking-tight text-navy group-hover:text-primary">{b.name}</span>
-                          <span className="mt-1 text-xs text-muted-foreground">{b.origin}</span>
+                        <Link to="/our-brands/$slug" params={{ slug: b.slug }} onClick={close} className="group flex h-28 items-center justify-center rounded-md border border-border p-4 hover:border-primary hover:shadow-card">
+                          <BrandLogo brand={b} loading="eager" />
                         </Link>
                       </li>
                     ))}
@@ -242,9 +242,9 @@ function MobileNav({ onNavigate }: { onNavigate: () => void }) {
       <Link to="/events" className={row}>Events</Link>
       <button type="button" className={row} aria-expanded={sec === "b"} onClick={() => toggle("b")}>Our Brands <ChevronDown className="h-4 w-4" /></button>
       {sec === "b" && (
-        <ul className="bg-tech px-5 py-2">
-          <li><Link to="/our-brands" className="block py-2 text-sm font-semibold text-primary">All brands</Link></li>
-          {brands.map((b) => <li key={b.slug}><Link to="/our-brands/$slug" params={{ slug: b.slug }} className="block py-2 text-sm">{b.name}</Link></li>)}
+        <ul className="grid grid-cols-2 gap-3 bg-tech px-5 py-3">
+          <li className="col-span-2"><Link to="/our-brands" className="block py-2 text-sm font-semibold text-primary">All brands</Link></li>
+          {brands.map((b) => <li key={b.slug}><Link to="/our-brands/$slug" params={{ slug: b.slug }} onClick={onNavigate} className="flex h-24 items-center justify-center rounded-md border border-border bg-card p-3"><BrandLogo brand={b} loading="eager" /></Link></li>)}
         </ul>
       )}
       <Link to="/careers" onClick={onNavigate} className={row}>Careers</Link>

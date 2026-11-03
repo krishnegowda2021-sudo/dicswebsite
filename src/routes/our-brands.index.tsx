@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/Blocks";
 import { brands } from "@/lib/site";
-import { products } from "@/lib/catalog";
 import { seo } from "@/lib/seo";
 import { BrandLogo } from "@/components/site/BrandLogo";
 
@@ -15,17 +14,11 @@ function BrandsPage() {
     <>
       <PageHeader title="Our brands" eyebrow="Technology brands" crumbs={[{ label: "Our Brands" }]} intro="Over the years DICS has associated with leading names in automation. Explore each manufacturer's products in our catalogue." />
       <section className="container-site grid gap-5 py-16 sm:grid-cols-2 lg:grid-cols-4">
-        {brands.map((b) => {
-          const count = products.filter((p) => p.brand === b.catalogName).length;
-          return (
-            <Link key={b.slug} to="/our-brands/$slug" params={{ slug: b.slug }} className="group flex flex-col rounded-lg border border-border bg-card p-7 transition-shadow hover:shadow-lift">
+        {brands.map((b) => (
+            <Link key={b.slug} to="/our-brands/$slug" params={{ slug: b.slug }} className="group flex h-36 items-center justify-center rounded-lg border border-border bg-card p-7 transition-shadow hover:border-primary hover:shadow-lift">
               <BrandLogo brand={b} />
-              <span className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{b.origin}</span>
-              <p className="mt-4 line-clamp-3 text-sm text-muted-foreground">{b.intro}</p>
-              <span className="mt-auto pt-5 text-sm font-semibold text-primary">{count} products →</span>
             </Link>
-          );
-        })}
+        ))}
       </section>
     </>
   );

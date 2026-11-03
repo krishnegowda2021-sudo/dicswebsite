@@ -62,9 +62,12 @@ export const submitEnquiry = createServerFn({ method: "POST" })
       return { ok: false as const, error: "We couldn't send your enquiry right now. Please call or email us instead." };
     }
     try {
+      const { getRequest } = await import("@tanstack/react-start/server");
+      const request = getRequest();
+      const sourceOrigin = new URL(request.url).origin;
       const response = await fetch(enquiryEmailEndpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "application/json", Referer: `${sourceOrigin}${data.pageUrl.startsWith("/") ? data.pageUrl : "/"}`, Origin: sourceOrigin },
         body: JSON.stringify({
           _subject: `New Website Enquiry - ${data.fullName}`,
           _template: "table",

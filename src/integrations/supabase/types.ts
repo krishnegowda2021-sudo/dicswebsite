@@ -14,7 +14,90 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      career_applications: {
+        Row: {
+          consent: boolean
+          created_at: string
+          email: string
+          experience: number
+          full_name: string
+          id: string
+          message: string
+          phone: string
+          position: string
+          skills: string
+        }
+        Insert: {
+          consent: boolean
+          created_at?: string
+          email: string
+          experience: number
+          full_name: string
+          id?: string
+          message?: string
+          phone: string
+          position: string
+          skills: string
+        }
+        Update: {
+          consent?: boolean
+          created_at?: string
+          email?: string
+          experience?: number
+          full_name?: string
+          id?: string
+          message?: string
+          phone?: string
+          position?: string
+          skills?: string
+        }
+        Relationships: []
+      }
+      enquiries: {
+        Row: {
+          company: string | null
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          interest: string | null
+          kind: string
+          message: string
+          page_url: string | null
+          phone: string
+          product_name: string | null
+          product_slug: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          interest?: string | null
+          kind?: string
+          message: string
+          page_url?: string | null
+          phone: string
+          product_name?: string | null
+          product_slug?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          interest?: string | null
+          kind?: string
+          message?: string
+          page_url?: string | null
+          phone?: string
+          product_name?: string | null
+          product_slug?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

@@ -1,7 +1,7 @@
 # Repository import
 - [x] Show authentic logos in the requested order on Brands and Home.
 - [x] Replace footer description with the simple company heading.
-- [ ] Enable and test enquiry notifications to dicsblr@gmail.com (blocked: sender domain setup).
+- [ ] Confirm FormSubmit delivery to dicsblr@gmail.com (restored; test stored successfully; blocked: recipient must click FormSubmit's Activate Form email).
 - [x] Import pages, catalogue, styling, and assets without repository metadata or credentials.
 - [x] Provision private enquiry and career submission storage in this project.
 - [x] Verify desktop and phone navigation, catalogue, sections, and form submission.

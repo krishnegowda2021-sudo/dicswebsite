@@ -16,6 +16,7 @@
 - Brand artwork is static CDN-backed media referenced in the shared brand catalogue and rendered by BrandLogo; resolve pointers through the public asset-origin helper so logos also work on external deployments.
 - Page URLs mirror the old WordPress site (/product/<slug>, /product-category/<path>, /about-us, /contact-us) so links and SEO carry over; old paths that changed get redirect routes.
 - Enquiries go through a validated server function into the enquiries table (insert-only for visitors) — never write to it from the browser.
+- After storing an enquiry, notify through the existing FormSubmit service with the request's real origin/referrer; report notification failures instead of claiming email delivery.
 - Careers listings and validation live in a browser-safe module; applications are stored through a validated server function with insert-only visitor access, while résumés use private email rather than public uploads.
 
 - Keep this project’s generated Cloud clients and migration history separate from imported source configuration to avoid connecting to the original app’s private data.

@@ -10,33 +10,258 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutUsRouteImport } from './routes/about-us'
+import { Route as CareersRouteImport } from './routes/careers'
+import { Route as ContactUsRouteImport } from './routes/contact-us'
+import { Route as EventsRouteImport } from './routes/events'
+import { Route as IndustriesRouteImport } from './routes/industries'
+import { Route as OurBrandRouteImport } from './routes/our-brand'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as ProductsRouteImport } from './routes/products'
+import { Route as RequestAQuoteRouteImport } from './routes/request-a-quote'
+import { Route as ShopRouteImport } from './routes/shop'
+import { Route as OurBrandsIndexRouteImport } from './routes/our-brands.index'
+import { Route as OurBrandsSlugRouteImport } from './routes/our-brands.$slug'
+import { Route as ProductCategorySplatRouteImport } from './routes/product-category.$'
+import { Route as ProductSlugRouteImport } from './routes/product.$slug'
+import { Route as ServiceSlugRouteImport } from './routes/service.$slug'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutUsRoute = AboutUsRouteImport.update({
+  id: '/about-us',
+  path: '/about-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactUsRoute = ContactUsRouteImport.update({
+  id: '/contact-us',
+  path: '/contact-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsRoute = EventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesRoute = IndustriesRouteImport.update({
+  id: '/industries',
+  path: '/industries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OurBrandRoute = OurBrandRouteImport.update({
+  id: '/our-brand',
+  path: '/our-brand',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsRoute = ProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RequestAQuoteRoute = RequestAQuoteRouteImport.update({
+  id: '/request-a-quote',
+  path: '/request-a-quote',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OurBrandsIndexRoute = OurBrandsIndexRouteImport.update({
+  id: '/our-brands/',
+  path: '/our-brands/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OurBrandsSlugRoute = OurBrandsSlugRouteImport.update({
+  id: '/our-brands/$slug',
+  path: '/our-brands/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductCategorySplatRoute = ProductCategorySplatRouteImport.update({
+  id: '/product-category/$',
+  path: '/product-category/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductSlugRoute = ProductSlugRouteImport.update({
+  id: '/product/$slug',
+  path: '/product/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServiceSlugRoute = ServiceSlugRouteImport.update({
+  id: '/service/$slug',
+  path: '/service/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/services/',
+  path: '/services/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesSlugRoute = ServicesSlugRouteImport.update({
+  id: '/services/$slug',
+  path: '/services/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
+  '/careers': typeof CareersRoute
+  '/contact-us': typeof ContactUsRoute
+  '/events': typeof EventsRoute
+  '/industries': typeof IndustriesRoute
+  '/our-brand': typeof OurBrandRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/products': typeof ProductsRoute
+  '/request-a-quote': typeof RequestAQuoteRoute
+  '/shop': typeof ShopRoute
+  '/our-brands/$slug': typeof OurBrandsSlugRoute
+  '/product-category/$': typeof ProductCategorySplatRoute
+  '/product/$slug': typeof ProductSlugRoute
+  '/service/$slug': typeof ServiceSlugRoute
+  '/services/$slug': typeof ServicesSlugRoute
+  '/our-brands/': typeof OurBrandsIndexRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
+  '/careers': typeof CareersRoute
+  '/contact-us': typeof ContactUsRoute
+  '/events': typeof EventsRoute
+  '/industries': typeof IndustriesRoute
+  '/our-brand': typeof OurBrandRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/products': typeof ProductsRoute
+  '/request-a-quote': typeof RequestAQuoteRoute
+  '/shop': typeof ShopRoute
+  '/our-brands/$slug': typeof OurBrandsSlugRoute
+  '/product-category/$': typeof ProductCategorySplatRoute
+  '/product/$slug': typeof ProductSlugRoute
+  '/service/$slug': typeof ServiceSlugRoute
+  '/services/$slug': typeof ServicesSlugRoute
+  '/our-brands': typeof OurBrandsIndexRoute
+  '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
+  '/careers': typeof CareersRoute
+  '/contact-us': typeof ContactUsRoute
+  '/events': typeof EventsRoute
+  '/industries': typeof IndustriesRoute
+  '/our-brand': typeof OurBrandRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/products': typeof ProductsRoute
+  '/request-a-quote': typeof RequestAQuoteRoute
+  '/shop': typeof ShopRoute
+  '/our-brands/$slug': typeof OurBrandsSlugRoute
+  '/product-category/$': typeof ProductCategorySplatRoute
+  '/product/$slug': typeof ProductSlugRoute
+  '/service/$slug': typeof ServiceSlugRoute
+  '/services/$slug': typeof ServicesSlugRoute
+  '/our-brands/': typeof OurBrandsIndexRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about-us'
+    | '/careers'
+    | '/contact-us'
+    | '/events'
+    | '/industries'
+    | '/our-brand'
+    | '/privacy-policy'
+    | '/products'
+    | '/request-a-quote'
+    | '/shop'
+    | '/our-brands/$slug'
+    | '/product-category/$'
+    | '/product/$slug'
+    | '/service/$slug'
+    | '/services/$slug'
+    | '/our-brands/'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about-us'
+    | '/careers'
+    | '/contact-us'
+    | '/events'
+    | '/industries'
+    | '/our-brand'
+    | '/privacy-policy'
+    | '/products'
+    | '/request-a-quote'
+    | '/shop'
+    | '/our-brands/$slug'
+    | '/product-category/$'
+    | '/product/$slug'
+    | '/service/$slug'
+    | '/services/$slug'
+    | '/our-brands'
+    | '/services'
+  id:
+    | '__root__'
+    | '/'
+    | '/about-us'
+    | '/careers'
+    | '/contact-us'
+    | '/events'
+    | '/industries'
+    | '/our-brand'
+    | '/privacy-policy'
+    | '/products'
+    | '/request-a-quote'
+    | '/shop'
+    | '/our-brands/$slug'
+    | '/product-category/$'
+    | '/product/$slug'
+    | '/service/$slug'
+    | '/services/$slug'
+    | '/our-brands/'
+    | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutUsRoute: typeof AboutUsRoute
+  CareersRoute: typeof CareersRoute
+  ContactUsRoute: typeof ContactUsRoute
+  EventsRoute: typeof EventsRoute
+  IndustriesRoute: typeof IndustriesRoute
+  OurBrandRoute: typeof OurBrandRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  ProductsRoute: typeof ProductsRoute
+  RequestAQuoteRoute: typeof RequestAQuoteRoute
+  ShopRoute: typeof ShopRoute
+  OurBrandsSlugRoute: typeof OurBrandsSlugRoute
+  ProductCategorySplatRoute: typeof ProductCategorySplatRoute
+  ProductSlugRoute: typeof ProductSlugRoute
+  ServiceSlugRoute: typeof ServiceSlugRoute
+  ServicesSlugRoute: typeof ServicesSlugRoute
+  OurBrandsIndexRoute: typeof OurBrandsIndexRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +273,147 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about-us': {
+      id: '/about-us'
+      path: '/about-us'
+      fullPath: '/about-us'
+      preLoaderRoute: typeof AboutUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact-us': {
+      id: '/contact-us'
+      path: '/contact-us'
+      fullPath: '/contact-us'
+      preLoaderRoute: typeof ContactUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events': {
+      id: '/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof EventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries': {
+      id: '/industries'
+      path: '/industries'
+      fullPath: '/industries'
+      preLoaderRoute: typeof IndustriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-brand': {
+      id: '/our-brand'
+      path: '/our-brand'
+      fullPath: '/our-brand'
+      preLoaderRoute: typeof OurBrandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products': {
+      id: '/products'
+      path: '/products'
+      fullPath: '/products'
+      preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/request-a-quote': {
+      id: '/request-a-quote'
+      path: '/request-a-quote'
+      fullPath: '/request-a-quote'
+      preLoaderRoute: typeof RequestAQuoteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-brands/': {
+      id: '/our-brands/'
+      path: '/our-brands'
+      fullPath: '/our-brands/'
+      preLoaderRoute: typeof OurBrandsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-brands/$slug': {
+      id: '/our-brands/$slug'
+      path: '/our-brands/$slug'
+      fullPath: '/our-brands/$slug'
+      preLoaderRoute: typeof OurBrandsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/product-category/$': {
+      id: '/product-category/$'
+      path: '/product-category/$'
+      fullPath: '/product-category/$'
+      preLoaderRoute: typeof ProductCategorySplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/product/$slug': {
+      id: '/product/$slug'
+      path: '/product/$slug'
+      fullPath: '/product/$slug'
+      preLoaderRoute: typeof ProductSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/service/$slug': {
+      id: '/service/$slug'
+      path: '/service/$slug'
+      fullPath: '/service/$slug'
+      preLoaderRoute: typeof ServiceSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/': {
+      id: '/services/'
+      path: '/services'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/$slug': {
+      id: '/services/$slug'
+      path: '/services/$slug'
+      fullPath: '/services/$slug'
+      preLoaderRoute: typeof ServicesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutUsRoute: AboutUsRoute,
+  CareersRoute: CareersRoute,
+  ContactUsRoute: ContactUsRoute,
+  EventsRoute: EventsRoute,
+  IndustriesRoute: IndustriesRoute,
+  OurBrandRoute: OurBrandRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  ProductsRoute: ProductsRoute,
+  RequestAQuoteRoute: RequestAQuoteRoute,
+  ShopRoute: ShopRoute,
+  OurBrandsSlugRoute: OurBrandsSlugRoute,
+  ProductCategorySplatRoute: ProductCategorySplatRoute,
+  ProductSlugRoute: ProductSlugRoute,
+  ServiceSlugRoute: ServiceSlugRoute,
+  ServicesSlugRoute: ServicesSlugRoute,
+  OurBrandsIndexRoute: OurBrandsIndexRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

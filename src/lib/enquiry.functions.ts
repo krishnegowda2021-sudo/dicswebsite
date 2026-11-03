@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { enquiryEmailEndpoint, enquiryEmailAccepted } from "./enquiry-email";
 
 export const enquirySchema = z.object({
   kind: z.enum(["general", "quote", "product"]),
@@ -59,6 +60,36 @@ export const submitEnquiry = createServerFn({ method: "POST" })
     if (error) {
       console.error("enquiry insert failed", error.message);
       return { ok: false as const, error: "We couldn't send your enquiry right now. Please call or email us instead." };
+    }
+    try {
+      const response = await fetch(enquiryEmailEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `New Website Enquiry - ${data.fullName}`,
+          _template: "table",
+          _captcha: "false",
+          _replyto: data.email,
+          Name: data.fullName,
+          Company: data.company || "-",
+          Email: data.email,
+          Phone: data.phone,
+          Requirement: data.interest || "-",
+          Product: data.productName || "-",
+          "Enquiry type": data.kind,
+          Message: data.message,
+          Page: data.pageUrl || "/",
+        }),
+        signal: AbortSignal.timeout(15000),
+      });
+      const result: unknown = await response.json();
+      if (!response.ok || !enquiryEmailAccepted(result)) {
+        console.error("FormSubmit notification rejected", response.status);
+        return { ok: false as const, error: "Your enquiry is saved, but the email notification could not be sent. Please contact us by phone or email." };
+      }
+    } catch {
+      console.error("FormSubmit notification unavailable");
+      return { ok: false as const, error: "Your enquiry is saved, but the email notification could not be sent. Please contact us by phone or email." };
     }
     return { ok: true as const };
   });

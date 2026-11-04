@@ -20,6 +20,7 @@ import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as RequestAQuoteRouteImport } from './routes/request-a-quote'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as EventsSlugRouteImport } from './routes/events_.$slug'
 import { Route as OurBrandsIndexRouteImport } from './routes/our-brands.index'
 import { Route as OurBrandsSlugRouteImport } from './routes/our-brands.$slug'
 import { Route as ProductCategorySplatRouteImport } from './routes/product-category.$'
@@ -83,6 +84,11 @@ const ShopRoute = ShopRouteImport.update({
   path: '/shop',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EventsSlugRoute = EventsSlugRouteImport.update({
+  id: '/events_/$slug',
+  path: '/events/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OurBrandsIndexRoute = OurBrandsIndexRouteImport.update({
   id: '/our-brands/',
   path: '/our-brands/',
@@ -131,6 +137,7 @@ export interface FileRoutesByFullPath {
   '/products': typeof ProductsRoute
   '/request-a-quote': typeof RequestAQuoteRoute
   '/shop': typeof ShopRoute
+  '/events/$slug': typeof EventsSlugRoute
   '/our-brands/$slug': typeof OurBrandsSlugRoute
   '/product-category/$': typeof ProductCategorySplatRoute
   '/product/$slug': typeof ProductSlugRoute
@@ -151,6 +158,7 @@ export interface FileRoutesByTo {
   '/products': typeof ProductsRoute
   '/request-a-quote': typeof RequestAQuoteRoute
   '/shop': typeof ShopRoute
+  '/events/$slug': typeof EventsSlugRoute
   '/our-brands/$slug': typeof OurBrandsSlugRoute
   '/product-category/$': typeof ProductCategorySplatRoute
   '/product/$slug': typeof ProductSlugRoute
@@ -172,6 +180,7 @@ export interface FileRoutesById {
   '/products': typeof ProductsRoute
   '/request-a-quote': typeof RequestAQuoteRoute
   '/shop': typeof ShopRoute
+  '/events_/$slug': typeof EventsSlugRoute
   '/our-brands/$slug': typeof OurBrandsSlugRoute
   '/product-category/$': typeof ProductCategorySplatRoute
   '/product/$slug': typeof ProductSlugRoute
@@ -194,6 +203,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/request-a-quote'
     | '/shop'
+    | '/events/$slug'
     | '/our-brands/$slug'
     | '/product-category/$'
     | '/product/$slug'
@@ -214,6 +224,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/request-a-quote'
     | '/shop'
+    | '/events/$slug'
     | '/our-brands/$slug'
     | '/product-category/$'
     | '/product/$slug'
@@ -234,6 +245,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/request-a-quote'
     | '/shop'
+    | '/events_/$slug'
     | '/our-brands/$slug'
     | '/product-category/$'
     | '/product/$slug'
@@ -255,6 +267,7 @@ export interface RootRouteChildren {
   ProductsRoute: typeof ProductsRoute
   RequestAQuoteRoute: typeof RequestAQuoteRoute
   ShopRoute: typeof ShopRoute
+  EventsSlugRoute: typeof EventsSlugRoute
   OurBrandsSlugRoute: typeof OurBrandsSlugRoute
   ProductCategorySplatRoute: typeof ProductCategorySplatRoute
   ProductSlugRoute: typeof ProductSlugRoute
@@ -343,6 +356,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShopRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/events_/$slug': {
+      id: '/events_/$slug'
+      path: '/events/$slug'
+      fullPath: '/events/$slug'
+      preLoaderRoute: typeof EventsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/our-brands/': {
       id: '/our-brands/'
       path: '/our-brands'
@@ -407,6 +427,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProductsRoute: ProductsRoute,
   RequestAQuoteRoute: RequestAQuoteRoute,
   ShopRoute: ShopRoute,
+  EventsSlugRoute: EventsSlugRoute,
   OurBrandsSlugRoute: OurBrandsSlugRoute,
   ProductCategorySplatRoute: ProductCategorySplatRoute,
   ProductSlugRoute: ProductSlugRoute,

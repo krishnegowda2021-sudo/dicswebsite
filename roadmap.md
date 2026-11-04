@@ -8,3 +8,5 @@
 - [x] Import pages, catalogue, styling, and assets without repository metadata or credentials.
 - [x] Provision private enquiry and career submission storage in this project.
 - [x] Verify desktop and phone navigation, catalogue, sections, and form submission.
+- [x] Add two event pages (30 Years, Automation Expo South) under Events with original photos.
+- [ ] Enquiry emails on the Cloudflare site — blocked until GitHub receives this project's changes and Cloudflare redeploys.

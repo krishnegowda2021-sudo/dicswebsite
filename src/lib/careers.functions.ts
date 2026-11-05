@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { careerApplicationSchema } from "./careers";
+import { careerApplicationSchema, careerNotificationEndpoint } from "./careers";
+import { enquiryActivatedOrigin, enquiryEmailAccepted } from "./enquiry-email";
 
 const submissionSchema = careerApplicationSchema.extend({
   website: z.string().max(0).default(""),
@@ -34,6 +35,33 @@ export const submitCareerApplication = createServerFn({ method: "POST" })
       message: data.message, consent: data.consent,
     });
     if (error) return { ok: false as const, error: "We couldn't save your application. Please try again or email us directly." };
-    // Owner notifications require a configured sender domain; never imply email delivery here.
-    return { ok: true as const, id, emailed: false as const };
+    // Notify HR through FormSubmit; the application stays saved even if this fails.
+    let emailed = false;
+    try {
+      const response = await fetch(careerNotificationEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json", Referer: `${enquiryActivatedOrigin}/careers`, Origin: enquiryActivatedOrigin },
+        body: JSON.stringify({
+          _subject: `New Job Application - ${data.fullName} (${data.position})`,
+          _template: "table",
+          _captcha: "false",
+          _replyto: data.email,
+          Name: data.fullName,
+          Email: data.email,
+          Phone: data.phone,
+          Position: data.position,
+          "Years of experience": String(data.experience),
+          Skills: data.skills,
+          Message: data.message || "-",
+          "Résumé": "Candidate was asked to email it separately",
+        }),
+        signal: AbortSignal.timeout(15000),
+      });
+      const result: unknown = await response.json().catch(() => null);
+      emailed = response.ok && enquiryEmailAccepted(result);
+      if (!emailed) console.error("FormSubmit career notification rejected", response.status, JSON.stringify(result));
+    } catch {
+      console.error("FormSubmit career notification unavailable");
+    }
+    return { ok: true as const, id, emailed };
   });

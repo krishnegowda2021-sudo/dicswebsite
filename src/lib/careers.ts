@@ -1,6 +1,7 @@
 import { z } from "zod";
 
-export const careerRecipients = ["bangalore@dicsglobal.com", "dicsblr@gmail.com"] as const;
+export const careerRecipients = ["hr@dicsglobal.com"] as const;
+export const careerNotificationEndpoint = `https://formsubmit.co/ajax/${careerRecipients[0]}`;
 
 export type JobOpening = {
   title: string;

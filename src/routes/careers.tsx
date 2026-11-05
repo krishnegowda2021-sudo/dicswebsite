@@ -66,7 +66,7 @@ function Careers() {
     <section className="bg-tech py-14">
       <div className="container-site">
         <SectionHeading eyebrow="How to apply" title="Share your experience with us" />
-        <ol className="mt-8 grid gap-8 md:grid-cols-3">{[{ title: "Choose your role", text: "Review the role, locations and qualifications, or express interest in future opportunities." }, { title: "Submit your details", text: "Include your contact details, years of experience and relevant technical skills." }, { title: "Email your résumé", text: "Attach your résumé and send it to bangalore@dicsglobal.com and dicsblr@gmail.com." }].map((step, i) => <li key={step.title}><span className="font-mono text-sm text-primary">0{i + 1}</span><h3 className="mt-3 text-lg tracking-normal">{step.title}</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{step.text}</p></li>)}</ol>
+        <ol className="mt-8 grid gap-8 md:grid-cols-3">{[{ title: "Choose your role", text: "Review the role, locations and qualifications, or express interest in future opportunities." }, { title: "Submit your details", text: "Include your contact details, years of experience and relevant technical skills." }, { title: "Email your résumé", text: "Attach your résumé and send it to hr@dicsglobal.com." }].map((step, i) => <li key={step.title}><span className="font-mono text-sm text-primary">0{i + 1}</span><h3 className="mt-3 text-lg tracking-normal">{step.title}</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{step.text}</p></li>)}</ol>
       </div>
     </section>
     <section id="application" className="container-site scroll-mt-52 py-14 md:py-16">

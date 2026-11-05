@@ -18,6 +18,7 @@ export function CareerApplication({ position }: { position: string }) {
   const send = useServerFn(submitCareerApplication);
   const [status, setStatus] = useState<"idle" | "sending" | "done">("idle");
   const [serverError, setServerError] = useState("");
+  const [emailed, setEmailed] = useState(false);
   async function prepare(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const values = Object.fromEntries(new FormData(event.currentTarget));
@@ -39,6 +40,7 @@ export function CareerApplication({ position }: { position: string }) {
         setStatus("idle");
         return;
       }
+      setEmailed(result.emailed);
       setEmailUrl(careerEmailUrl(careerRecipients.join(","), parsed.data));
       setStatus("done");
     } catch {
@@ -57,7 +59,7 @@ export function CareerApplication({ position }: { position: string }) {
   if (status === "done") return <div role="status" className="mt-8 border-l-2 border-success bg-tech p-6">
     <CheckCircle2 className="h-7 w-7 text-success" aria-hidden />
     <h3 className="mt-4 text-xl">Your application details have been received</h3>
-    <p className="mt-3 text-sm text-muted-foreground">Your details are saved. Automatic email notifications are not active yet. To send your résumé to our team, open the email below, attach your résumé and send it.</p>
+    <p className="mt-3 text-sm text-muted-foreground">{emailed ? "Your details are saved and our HR team has been notified." : "Your details are saved."} To send your résumé, open the email below, attach your résumé and send it to hr@dicsglobal.com.</p>
     <Button asChild className="mt-5"><a href={emailUrl}><Mail aria-hidden /> Email details and résumé</a></Button>
   </div>;
   return (

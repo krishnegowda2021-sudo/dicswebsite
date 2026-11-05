@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { careerApplicationSchema, careerEmailUrl } from "@/lib/careers";
+import { careerApplicationSchema, careerEmailUrl, careerRecipients, careerNotificationEndpoint } from "@/lib/careers";
 
 const application = { fullName: "Test Candidate", email: "candidate@example.com", phone: "+91 9876543210", position: "PLC Programmer", experience: "3", skills: "PLC & HMI programming", message: "Application for engineering", consent: true };
 describe("Careers application email", () => {
@@ -18,5 +18,9 @@ describe("Careers application email", () => {
   it("addresses both recruitment inboxes safely", () => {
     expect(careerEmailUrl("bangalore@dicsglobal.com,dicsblr@gmail.com", application)).toContain("mailto:bangalore@dicsglobal.com,dicsblr@gmail.com?");
     expect(() => careerEmailUrl("bangalore@dicsglobal.com,invalid", application)).toThrow();
+  });
+  it("sends job applications only to hr@dicsglobal.com", () => {
+    expect(careerRecipients).toEqual(["hr@dicsglobal.com"]);
+    expect(careerNotificationEndpoint).toBe("https://formsubmit.co/ajax/hr@dicsglobal.com");
   });
 });

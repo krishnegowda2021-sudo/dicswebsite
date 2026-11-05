@@ -10,3 +10,5 @@
 - [x] Verify desktop and phone navigation, catalogue, sections, and form submission.
 - [x] Add two event pages (30 Years, Automation Expo South) under Events with original photos.
 - [ ] Enquiry emails on the Cloudflare site — blocked until GitHub receives this project's changes and Cloudflare redeploys.
+- [x] Send job applications to hr@dicsglobal.com (enquiries stay on dicsblr@gmail.com).
+- [ ] Test-send both forms — blocked: FormSubmit email service is offline (error 522) as of Nov 5 12:00 UTC; hr@dicsglobal.com must also click FormSubmit's one-time "Activate Form" email.
